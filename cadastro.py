@@ -15,11 +15,25 @@ def salvar_produto(produto):
 def listar_produtos():
     try:
         whit open("produtos.txt", "r", encoding="utf-8") as arquivo:
-            for linha in arquivo:
-                nome, preco, categoria = linha.strip().split(";")
-                print(f"Produto: {nome} | Preço: R${preco} |")
+        for linha in
+                 nome, preco, categoria = linha.strip().split(";")
+            print(f"Produto: {nome} | Preço: R${preco} | Categoria: {categoria}") 
+    except FileNotFoundError:
+        print("Nenhum produto cadastrado ainda.")
 
+while True:
+    print("\n1 - Cadastrar produto")
+    print("2 - Listar produtos")
+    print("0 - Sair")
+    opcao = input("Escolha: ")
 
+    if opcao == "1":
+        produto = cadastrar_produto()
+        salvar_produto(produto)
+    elif opcao == "2":
+        listar_produtos()
+    elif opcao == "0":
+        break    
 
 
 
